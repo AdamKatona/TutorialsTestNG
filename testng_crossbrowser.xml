@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Cross Browser Testing">
+    <parameter name="URL" value="https://www.lambdatest.com/selenium-playground/"/>
+<!--    needs to be changed on a per test run/test case basis, because we could define multiple tests with multiple own
+        browser definitions and set setUp() as @BeforeTest instead of @BeforeSuite,
+        but for that the setDriver() in setUp() in FW needs to be called multiple times,
+        which goes against the static WebDriver declaration and will result in an expected exception
+        solution could be to create multiple instances of FW, but that would go against the single root FW structure,
+        where each test can work off of the same WebDriver instance and toolset implemented in the FW class - Catch 22
+-->
+    <parameter name="browser" value="chrome"/>
+    <parameter name="version" value="latest"/>
+    <parameter name="platform" value="Windows 10"/>
+    <test name = "Crossbrowser test example">
+        <classes>
+            <class name="DemoTestNG.CrossBrowserTesting"/>
+        </classes>
+    </test>
+    <test name = "Geolocation test with SeleniumGrid">
+        <classes>
+            <class name="DemoTestNG.GeoLocation_SeleniumGrid"/>
+        </classes>
+    </test>
+</suite>
